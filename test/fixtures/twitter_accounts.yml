@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  actress: MyString
+  twitter_url: MyString
+
+two:
+  actress: MyString
+  twitter_url: MyString
