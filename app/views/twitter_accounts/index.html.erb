@@ -1,29 +1,30 @@
-<h1>Listing twitter_accounts</h1>
-
+<h1>Actress Twitter Accounts</h1>
+<h4>if an actress has a twitter account, click the link and check the account</h4>
 <table>
-  <thead>
-    <tr>
-      <th>Actress</th>
-      <th></th>
-      <th>Twitter url</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<th>Actress</th>
+			<th>Twitter Url</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @twitter_accounts.each do |twitter_account| %>
-      <tr>
-        <td><%= twitter_account.actress %></td>
-        <td><%= twitter_account.twitter_url %></td>
-        <td><%= link_to 'Show', twitter_account %></td>
-        <td><%= link_to 'Edit', edit_twitter_account_path(twitter_account) %></td>
-        <td><%= link_to 'Destroy', twitter_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @twitter_accounts.each do |twitter_account| %>
+		<tr>
+			<td><%= twitter_account.actress %></td>
+			<td> 
+			<% if twitter_account.twitter_url %> 
+				<a href="<%= 'https://twitter.com/'+twitter_account.twitter_url %>"><%= twitter_account.twitter_url %></a></td>
+			<% end %>
+			<td><%= link_to 'Show', twitter_account %></td>
+			<td><%= link_to 'Edit', edit_twitter_account_path(twitter_account) %></td>
+			<td><%= link_to 'Destroy', twitter_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>

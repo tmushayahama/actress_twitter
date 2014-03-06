@@ -1,2 +1,0 @@
-class TwitterAccountController < ApplicationController
-end
