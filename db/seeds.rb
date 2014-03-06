@@ -1,6 +1,5 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-
 require 'nokogiri'
 require 'open-uri'
 require 'openssl'
@@ -18,14 +17,14 @@ actress_list =  actresses_data.css(".div-col li")
 #the first is the one we want
 #get the next element "span" which has a text of actress' twitter
 actress_list.each do |actress|
-#this is where the actress name is from the Wikipedia
+  #this is where the actress name is from the Wikipedia
   actress_name = actress.at_css('a').text.strip
 
   #There was a problem with spaces and some of the characters on actress names
   #It was causing a bad uri error
   #Solution is to use the URI::encode and then parse
   #remember to remove the space in between so that twitter will not assume you meant "and" i.e. Searching for "Caroline Aaron"
-  # will yield Steve Begleiter ‏twitter account who has chldren named Caroline and Aaron
+  #will yield Steve Begleiter ‏twitter account who has chldren named Caroline and Aaron
   twitter_search_url = URI::encode("https://twitter.com/search?q="+actress_name.gsub(" ", "")+"&mode=users")
   URI.parse(twitter_search_url)
   twitter_search_data = Nokogiri::HTML(open(twitter_search_url, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
@@ -40,6 +39,7 @@ actress_list.each do |actress|
     fullname = verified_icon_class.previous_element.previous_element
     #Does fullname of the verified badge match the actress name
     if fullname.text.strip.upcase==actress_name.upcase
+      # remove the first '@' symbol
       twitter_account_name = screen_name_class.text.strip.gsub(/^\@/, "")
       t = TwitterAccount.create(:actress=>actress_name, :twitter_url=>twitter_account_name)
       puts actress_name+" | "+twitter_account_name
