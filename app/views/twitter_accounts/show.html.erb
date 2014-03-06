@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Actress:</strong>
+  <%= @twitter_account.actress %>
+</p>
+
+<p>
+  <strong>Twitter url:</strong>
+  <%= @twitter_account.twitter_url %>
+</p>
+
+<%= link_to 'Edit', edit_twitter_account_path(@twitter_account) %> |
+<%= link_to 'Back', twitter_accounts_path %>

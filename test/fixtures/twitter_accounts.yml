@@ -2,8 +2,12 @@
 
 one:
   actress: MyString
+  : MyString
   twitter_url: MyString
+  : MyString
 
 two:
   actress: MyString
+  : MyString
   twitter_url: MyString
+  : MyString
